@@ -5,3 +5,5 @@ from .models import *
 admin.site.register(Professor)
 admin.site.register(Comment)
 admin.site.register(Student)
+admin.site.register(Upvotes)
+admin.site.register(Ratings)

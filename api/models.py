@@ -17,17 +17,9 @@ class Professor(models.Model):
         ('man', 'management-studies'),
     )
 
-    RATING_CHOICES = (
-        (0, 'worst'),
-        (1, 'bad'),
-        (2, 'ok'),
-        (3, 'nice'),
-        (4, 'good'),
-        (5, 'best'),
-    )
+
     name = models.CharField(max_length=200, blank=True, null=True)
     dept = models.CharField(max_length=200, blank=True, null=True, choices=DEPT_CHOICES)
-    rating = models.IntegerField(default=0, null=False, blank=False, choices=RATING_CHOICES)
     designation = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(max_length=200, null=True, blank=True)
     portfolio_url = models.URLField(max_length=800, null=True, blank=True)
@@ -55,3 +47,27 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.stud.username + '\'s review of ' + self.prof.name
+    
+
+class Upvotes(models.Model):
+    user_id = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
+    comment_id = models.ForeignKey(Comment, null=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.id
+
+
+class Ratings(models.Model):
+    RATING_CHOICES = (
+        (0, 'worst'),
+        (1, 'bad'),
+        (2, 'ok'),
+        (3, 'nice'),
+        (4, 'good'),
+        (5, 'best'),
+    )
+    user_id = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
+    prof_if = models.ForeignKey(Professor, null=True, on_delete=models.CASCADE)
+    rating = models.IntegerField(default=0, null=False, blank=False, choices=RATING_CHOICES)
+
+    def __str__(self):
+        return self.id

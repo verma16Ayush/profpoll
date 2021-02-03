@@ -43,17 +43,22 @@ class Comment(models.Model):
     stud = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
     content = models.TextField(max_length=1500, null=True, blank=True, editable=True)
     date_added = models.DateTimeField(auto_now_add=True, null=True)
-    votes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.stud.username + '\'s review of ' + self.prof.name
     
 
 class Upvotes(models.Model):
+    VOTE_CHOICES = (
+        (1, 'upvote'),
+        (-1, 'downvote'),
+    )
     user_id = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
     comment_id = models.ForeignKey(Comment, null=True, on_delete=models.CASCADE)
+    value = models.IntegerField(null=True, blank=True, choices=VOTE_CHOICES)
+
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 
 class Ratings(models.Model):
@@ -66,8 +71,9 @@ class Ratings(models.Model):
         (5, 'best'),
     )
     user_id = models.ForeignKey(Student, null=True, on_delete=models.CASCADE)
-    prof_if = models.ForeignKey(Professor, null=True, on_delete=models.CASCADE)
+    prof_id = models.ForeignKey(Professor, null=True, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now_add=True, null=True)
     rating = models.IntegerField(default=0, null=False, blank=False, choices=RATING_CHOICES)
 
     def __str__(self):
-        return self.id
+        return str(self.id)

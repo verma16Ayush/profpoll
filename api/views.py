@@ -10,44 +10,27 @@ from .serializers import *
 def api_overview(request):
     return Response('Soon')
 
-
 @api_view(['GET'])
 def prof_list(request):
-    profs = Professor.objects.all().order_by('-rating')
-    profs_serialized = ProfSerializer(profs, many=True)
-    return Response(profs_serialized.data)
+    profs = Professor.objects.all()
+    profs_slz = ProfSerializer(profs, many=True)
+    return Response(profs_slz.data)
 
 @api_view(['GET'])
-def get_prof(request, pk):
+def profs_by_dept(requst, dept):
+    profs = Professor.objects.filter(dept=dept)
+    profs_slz = ProfSerializer(profs, many=True)
+    return Response(profs_slz.data)
+
+@api_view(['GET'])
+def prof_rating(request, pk):
     prof = Professor.objects.get(id=pk)
-    prof_serialized = ProfSerializer(prof, many=False)
-    return Response(prof_serialized.data)
+    prof_slz = ProfSerializer(prof, many=False)
+    return Response(prof_slz.data)
 
 @api_view(['GET'])
-def prof_comment(request, pk):
-    comments = Comment.objects.filter(prof=pk).order_by('-votes')
-    comments_serialized = CommentSerializer(comments, many=True)
-    return Response(comments_serialized.data)
+def prof_comments(request, pk):
+    comment = Comment.objects.filter(prof=pk)
+    comment_slz = CommentSerializer(comment, many=True)
+    return Response(comment_slz.data)
 
-
-@api_view(['POST'])
-def post_rating(request, pk):
-    return Response('Soon')
-
-
-@api_view(['POST'])
-def post_comment(request, pk):
-    return Response('Soon')
-
-
-@api_view(['POST'])
-def edit_comment(request, pk):
-    return Response('Soon')
-
-@api_view(['DELETE'])
-def delete_comment(request, pk):
-    return Response('Soon')
-
-@api_view(['POST'])
-def upvote_comment(request, pk):
-    return Response('Soon')

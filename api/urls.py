@@ -4,11 +4,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', views.api_overview, name='api_overview'),
-    path('profs/', views.prof_list, name='prof_list'),
-    path('get_prof/', views.get_prof, name='get_prof'),
-    path('prof_comment/<str:pk>/', views.prof_comment, name='prof_comment'),
-    path('post_comment/<str:pk>/', views.post_comment, name='post_comment'),
-    path('edit_comment/<str:pk>/', views.edit_comment, name='edit_comment'),
-    path('delete_comment<str:pk>/', views.delete_comment, name='delete_comment'),
-    path('upvote_comment/<str:pk/', views.upvote_comment, name='upvote_comment'),
+    path('prof_list/', views.prof_list, name='prof_list'),
+    path('prof_by_dept/<str:dept>/', views.profs_by_dept, name='prof_by_dept'),
+    path('prof_rating/<str:pk>/', views.prof_rating, name='prof_rating'),
+    path('prof_comments/,str:pk>', views.prof_comments, name='prof_comments'),
 ]

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from .models import *
 
 
@@ -22,13 +23,13 @@ class ProfSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Professor
-        fields = ('name', 'dept', 'designation', 'email', 'portfolio_url', 'prof_rating', 'count_rating')
+        fields = ('id', 'name', 'dept', 'designation', 'email', 'portfolio_url', 'prof_rating', 'count_rating')
 
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = ['username', 'karma']
+        fields = ('id', 'user', 'karma')
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -39,8 +40,18 @@ class CommentSerializer(serializers.ModelSerializer):
         k = 0
         for v in votes:
             k += v.value
+        return votes
 
     class Meta:
         model = Comment
-        fields = ('prof', 'stud', 'content', 'date_added', 'votes')
+        fields = ('id', 'prof', 'stud', 'content', 'date_added', 'comment_votes')
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'password')
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ratings
+        fields = '__all__'

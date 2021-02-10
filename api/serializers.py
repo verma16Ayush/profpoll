@@ -8,7 +8,7 @@ class ProfSerializer(serializers.ModelSerializer):
     count_rating = serializers.SerializerMethodField()
     count = 0
 
-    def get_prof_rating(self, instance):
+    def get_prof_rating(self, instance: Professor):
         ratings = Ratings.objects.filter(prof_id=instance)
         self.count = ratings.count()
         if(self.count == 0):
@@ -18,7 +18,7 @@ class ProfSerializer(serializers.ModelSerializer):
             k += r.rating
         return k // self.count
     
-    def get_count_rating(self, instance):
+    def get_count_rating(self, instance: Professor):
         return self.count
 
     class Meta:
@@ -35,7 +35,7 @@ class StudentSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     comment_votes = serializers.SerializerMethodField()
 
-    def get_comment_votes(self, instance):
+    def get_comment_votes(self, instance: Comment):
         votes = Upvotes.objects.filter(comment_id=instance)
         k = 0
         for v in votes:

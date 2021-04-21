@@ -12,6 +12,7 @@ from django.contrib.auth import login, logout, authenticate
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def api_overview(request):
+    """Returns a JSON response with an overview of the various api endpoints"""
     data = {
         'api/':'api end-points overview',
         'api/list/':'list all professors',

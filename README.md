@@ -126,11 +126,11 @@ The project implements a REST API that could later be consumed by a frontend bui
 
 #### Overview
 
-To get an overview of all available API endpoints, go to
+To get an overview of all available API endpoints, go to:
 ```
 http://127.0.0.1:8000/api/
 ```
-this would return a json response that will look like
+this would return a json response that will look like:
 
 ```json
     {

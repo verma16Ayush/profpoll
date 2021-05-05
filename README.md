@@ -34,7 +34,7 @@ This project aims at providing an anonymous yet, authenticated platform for stud
 
 ```
 
-## Get Started With the Project
+## How to get Started With the Project?
 > NOTE: if you want to just modify the project for personal use, you can go right ahead and clone it. However, if you aim at collaborating and making PRs, it is recommended that you first fork your own copy of the project and then clone.
 
 This documentation is oriented to setting up the project in vscode using a virtual enviornment.

@@ -34,7 +34,7 @@ This project aims at providing an anonymous yet, authenticated platform for stud
 
 ```
 
-## Get Started With the Project
+## How to get Started With the Project?
 > NOTE: if you want to just modify the project for personal use, you can go right ahead and clone it. However, if you aim at collaborating and making PRs, it is recommended that you first fork your own copy of the project and then clone.
 
 This documentation is oriented to setting up the project in vscode using a virtual enviornment.
@@ -83,7 +83,7 @@ Once all the above steps are completed successfully, you should now be able to l
 ```bash
     python manage.py runserver
 ```
-### [OPTIONAL:] To serve the project over a LAN.
+### [OPTIONAL:] serve the project over a LAN.
 
 To serve the project over a local area network such as your wifi, you will need to first add the IP of your network to the list of allowed hosts in `settings.py` file.
 
@@ -114,7 +114,7 @@ then while running the server, you will have to write
 ```
 where `$(IP)` should be replaced with the IP of the LAN over which you want to serve your project.
 
-You must now be able to see the admin panel. simply go the your browser and type into the address bar:
+You must now be able to see the admin panel. simply go to your browser and type into the address bar:
 ```
 http://127.0.0.1:8000/admin/
 ```

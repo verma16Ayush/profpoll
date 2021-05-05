@@ -49,19 +49,19 @@ cd into the project directory:
 ```bash
     cd profpoll
 ```
-create a virtual enviornment and activate it, I will be using `python3`'s venv tool. Feel free to use any other that you like.
+create a virtual enviornment and activate it, This document uses `python3`'s venv tool. Feel free to use any other that you like.
 
 ```bash
     python3 -m venv .venv
     ./.venv/bin/activate
 ```
-First we will need to install dependencies. all the dependencies are neatly frozen using `pip freeze` into the `requirements.txt` file. If you install any new dependencies, make sure to add them to `requirements.txt` as well.
+First we will need to install dependencies. All the dependencies are neatly frozen using `pip freeze` into the `requirements.txt` file. In case any new dependencies are installed, make sure to add them to requirements.txt file
 To install the dependencies:
 ```bash
     pip install -r requirements.txt
 ```
 
-> NOTE: to list any new dependencies that you install
+> To list any new dependencies that were installed
 ```bash
     pip freeze > requirements.txt
 ```
@@ -72,17 +72,18 @@ migrate the database changes.
     python manage.py makemigrations
     python manage.py migrate
 ```
-Once all the migrations are setup, you will need to create a superuser to acquire administrative privileges.
+Once all the migrations are setup, a superuser must be created to acquire administrative privileges.
 ```bash
     python manage.py createsuperuser
 ``` 
 and follow prompted instructions.
 
-Once all the above steps are completed successfully, you should now be able to locally serve the project. To do that:
+Once all the above steps are completed successfully, the project is ready to be served over a localhost. To do that:
 
 ```bash
     python manage.py runserver
 ```
+---
 ### [OPTIONAL:] To serve the project over a LAN.
 
 To serve the project over a local area network such as your wifi, you will need to first add the IP of your network to the list of allowed hosts in `settings.py` file.
@@ -92,33 +93,33 @@ To obtain your LAN's IP, in the terminal, write:
 ```bash
     ifconfig | grep inet
 ```
-and grab your wifi's or your desired LAN's ip. for e.g. in my case the above command outputs:
-
+and grab your wifi's or your desired LAN's ip. for e.g. An example output of the above command:
 ```bash
     inet 127.0.0.1  netmask 255.0.0.0
     inet6 ::1  prefixlen 128  scopeid 0x10<host>
     inet 192.168.43.189  netmask 255.255.255.0  broadcast 192.168.43.255
     inet6 fe80::6f44:2dcb:d1fe:20d9  prefixlen 64  scopeid 0x20<link>
 ```
-so in my case my wifi's ip was `192.168.43.189`. Then go edit `settings.py` and in the list of `ALLOWED_HOSTS` add one more element that is your wifi's IP suffixed with a port number. for e.g. I would write:
+so in this case the wifi's ip is `192.168.43.189`. Then go edit `settings.py` and in the list of `ALLOWED_HOSTS` add one more element that is your wifi's IP suffixed with a port number. for e.g. I would write:
 ```
 ALLOWED_HOSTS=[..., 192.168.43.189:8000]
 ```
-where the ellipses indicate already present allowed hosts.
+where the ellipses indicate already present allowed hosts && `:8000` is the port number.
 
-Alternatively, you could also do `ALLOWED_HOSTS=['*']` which would allow you to serve your project over any host **but use this at your own discretion**
+Alternatively, you could also do `ALLOWED_HOSTS=['*']` which would allow to serve the project over any host **but this should be used at your own discretion**
 
-then while running the server, you will have to write 
+then while running the server, we must: 
 ```bash
     python manage.py runserver $(IP)
 ```
 where `$(IP)` should be replaced with the IP of the LAN over which you want to serve your project.
 
-You must now be able to see the admin panel. simply go the your browser and type into the address bar:
+---
+The djnago-admin panel must now be accessible. Simply go the your browser and type into the address bar:
 ```
 http://127.0.0.1:8000/admin/
 ```
-where `127.0.0.1:8000` should be replaced with with your LAN's IP if you chose to serve the project over it as described in the `OPTIONAL` section. This should be followed all through the rest of this `README.md` file.
+where `127.0.0.1:8000` should be replaced with with the LAN's IP if the project is being over it as described in the `OPTIONAL` section. This should be followed all through the rest of this `README.md` file.
 
 ## The API
 

@@ -14,6 +14,13 @@ unbiased and unadulterated constructive reviews about professors and, in
 future, various other aspects of the college across the spectrum ranging
 from administration, accomodation etc.
 
+This sphinx documentation is created partially following the Diataxis guidelines
+to be a demo for GSoD'21 application. The How-To section outlines
+How to setup the project locally for development and debugging.
+and the Reference section contain the reference of the profpoll REST API.
+The tutorials and explanation sections, however, are still out of scope of the project.
+
+
 Project Tree
 ------------
 
@@ -22,13 +29,11 @@ Project Tree
         profpoll
         ├─ .gitignore
         ├─ README.md
-        ├─ README2.md
         ├─ api
         │  ├─ __init__.py
         │  ├─ admin.py
         │  ├─ apps.py
-        │  ├─ migrations
-        │  │  ├─
+        │  ├─ migrations/
         │  ├─ models.py
         │  ├─ serializers.py
         │  ├─ tests.py

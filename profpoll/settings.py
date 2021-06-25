@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent
 SECRET_KEY = '(1h9!va(ey%$#ww^fj%8s=q@b!f10(5nsv(x%-98^dl@762n7b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '192.168.43.189']
 
@@ -127,4 +127,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # ALLOWED_HOSTS=['*']
 CORS_ORIGIN_ALLOW_ALL = True
-dja
+django_heroku.settings(locals())

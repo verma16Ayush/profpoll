@@ -10,7 +10,7 @@ class ProfSerializer(serializers.ModelSerializer):
 
     def get_prof_rating(self, instance):
         ratings = Ratings.objects.filter(prof_id=instance)
-        self.count = ratings.count()
+        self.count:int = ratings.count()
         if(self.count == 0):
             return 0
         k = 0;

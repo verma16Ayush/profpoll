@@ -14,7 +14,8 @@ other aspects of the college across the spectrum ranging from administration,
 accomodation etc.
 
 ## Docs at 
-https://profpoll.readthedocs.io/en
+https://profpoll.readthedocs.io/en/latest
+
 
 
 ## Project Tree
